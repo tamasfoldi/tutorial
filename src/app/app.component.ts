@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { TitleService } from './services/title.service';
 import { APP_TITLE } from './tokens';
 
@@ -9,7 +9,11 @@ import { APP_TITLE } from './tokens';
   providers: [
     {
       provide: TitleService,
-      useFactory: (title: string) => new TitleService(`${title}_factory`),
+      useClass: class extends TitleService {
+        constructor(title: string) {
+          super(`${title}_class`);
+        }
+      },
       deps: [APP_TITLE]
     }
   ]

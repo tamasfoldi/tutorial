@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -12,9 +12,12 @@ export class ChildComponent implements OnInit {
   @Input('counterStream')
   counterStream: Observable<number>;
 
+  constructor(private _chDR: ChangeDetectorRef) { }
+
   ngOnInit() {
     this.counterStream.subscribe(i => { // leaks
       this.counter += i;
+      this._chDR.markForCheck();
     })
   }
 

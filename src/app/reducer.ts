@@ -12,5 +12,7 @@ export function reducer(state = initialState, action) {
     case 'DECREASE SUCCESS':
     case 'INCREASE SUCCESS':
       return { ...state, counter: action.payload };
+
+    default: return state;
   }
 }

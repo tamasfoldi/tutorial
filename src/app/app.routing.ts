@@ -10,6 +10,10 @@ export const routes: Routes = [
     component: ChildComponent
   },
   {
+    path: 'home',
+    component: ChildComponent
+  },
+  {
     path: '2',
     component: Child2Component,
     canActivate: [CanLoadGuard]

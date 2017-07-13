@@ -20,7 +20,8 @@ export class FormComponent implements OnInit {
     this.form = this.fb.group({
       text: [this.model.text, Validators.minLength(3)],
       email: [this.model.email, Validators.email],
-      number: [this.model.number, Validators.required]
+
+      number: [this.model.text, Validators.required]
     });
   }
 

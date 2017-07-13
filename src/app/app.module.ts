@@ -7,12 +7,14 @@ import { ChildComponent } from './comonents/child/child.component';
 import { routes } from './app.routing';
 import { CanLoadGuard } from './guards/can-load.guard';
 import { Child2Component } from './components/child2/child2.component';
+import { AuxChildComponent } from './components/aux-child/aux-child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChildComponent,
-    Child2Component
+    Child2Component,
+    AuxChildComponent
   ],
   imports: [
     BrowserModule,

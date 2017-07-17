@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { HttpClientService } from './services/http-client.service';
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private httpClientService: HttpClientService) {
+    this.httpClientService.getData()
+      .map(datas => datas
+        .map(data => data.id))
+      .subscribe(ids => console.log(ids));
+  }
 }
